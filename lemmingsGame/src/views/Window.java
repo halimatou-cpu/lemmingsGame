@@ -13,7 +13,7 @@ public class Window extends JFrame {
 		this.setLocation(50, 100);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-//		this.add(new GamePanel());
+		this.add(new GamePanel());
 
 		this.setResizable(false);
 		this.setVisible(true);
