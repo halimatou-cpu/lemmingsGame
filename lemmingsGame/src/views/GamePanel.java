@@ -12,6 +12,16 @@ import config.Config;
 //import views.panels.GameMouseListener;
 
 public class GamePanel extends AbstractPanel {
+
+	String marcheur = "MARCHEUR";
+	String bloqueur = "BLOQUEUR";
+	String tunnelier = "TUNNELIER";
+	String foreur = "FOREUR";
+	String bombeur = "BOMBEUR";
+	String charpentier = "CHARPENTIER";
+	String grimpeur = "GRIMPEUR";
+	String parachutiste = "PARACHUTISTE";
+
 	public GamePanel() {
 		// TODO Auto-generated constructor stub
 		super();
@@ -32,8 +42,14 @@ public class GamePanel extends AbstractPanel {
 	}
 
 	private void createButtons() {
-		this.add(this.createButton("Marcheur", 1));
-		this.add(this.createButton("Charpentier", 2));
+		this.add(this.createButton(marcheur, 1));
+		this.add(this.createButton(bloqueur, 2));
+		this.add(this.createButton(tunnelier, 3));
+		this.add(this.createButton(foreur, 4));
+		this.add(this.createButton(bombeur, 5));
+		this.add(this.createButton(charpentier, 6));
+		this.add(this.createButton(grimpeur, 7));
+		this.add(this.createButton(parachutiste, 8));
 	}
 
 	private JButton createButton(String text, final int index) {
@@ -44,6 +60,9 @@ public class GamePanel extends AbstractPanel {
 		button.setSize(Config.MENU_WIDTH, height);
 		button.setFont(new Font(Font.DIALOG, Font.PLAIN | Font.BOLD, 10));
 		button.setFocusPainted(false);
+
+		// pour racccourcir ceci, faire une methode externe like "actionsetter(int
+		// index), then un match with"
 
 //		button.addActionListener(actionEvent -> {
 //			if (index == 1)
