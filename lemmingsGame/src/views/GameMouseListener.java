@@ -5,7 +5,7 @@ import java.awt.event.MouseListener;
 
 import config.Config;
 import models.Lemming;
-//import models.ModelContainer;
+import models.ModelContainer;
 
 public class GameMouseListener implements MouseListener {
 
@@ -18,11 +18,11 @@ public class GameMouseListener implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent mouseEvent) {
 		// TODO Auto-generated method stub
-//		Lemming lemming = ModelContainer.getInstance().findLemmingAt(mouseEvent.getX() / Config.SCALE,
-//				mouseEvent.getY() / Config.SCALE);
-//		if (lemming != null) {
-//			this.gamePanel.setCurrentLemming(lemming);
-//		}
+		Lemming lemming = ModelContainer.getInstance().findLemmingAt(mouseEvent.getX() / Config.SCALE,
+				mouseEvent.getY() / Config.SCALE);
+		if (lemming != null) {
+			this.gamePanel.setCurrentLemming(lemming);
+		}
 
 	}
 

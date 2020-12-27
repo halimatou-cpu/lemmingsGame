@@ -7,11 +7,19 @@ import java.awt.Graphics;
 import javax.swing.JButton;
 
 import config.Config;
+import models.Direction;
+import models.Lemming;
+import models.ModelContainer;
+import models.Position;
+import models.fonctionnalities.State;
 
 //import models.ModelContainer;
 //import views.panels.GameMouseListener;
 
 public class GamePanel extends AbstractPanel {
+
+	private State state;
+	private final ModelContainer container;
 
 	String marcheur = "MARCHEUR";
 	String bloqueur = "BLOQUEUR";
@@ -25,7 +33,7 @@ public class GamePanel extends AbstractPanel {
 	public GamePanel() {
 		// TODO Auto-generated constructor stub
 		super();
-//		this.container = ModelContainer.getInstance();
+		this.container = ModelContainer.getInstance();
 		this.createButtons();
 		this.addMouseListener(new GameMouseListener(this));
 	}
@@ -38,7 +46,18 @@ public class GamePanel extends AbstractPanel {
 		graphics.fillRect(0, 0, Config.MAIN_COMPONENT_WIDTH, Config.MAIN_COMPONENT_HEIGHT);
 
 //		this.printCases(graphics);
-//		this.printLemmings(graphics);
+		this.printLemmings(graphics);
+	}
+
+	private void printLemmings(Graphics graphics) {
+//		(new Lemming(new Position(12,12), Direction.RIGHT)).print(graphics, new Position(12, 12));
+		for (Lemming lemming : this.container.getLemmings()) {
+			if (lemming.isActive())
+				lemming.print(graphics, lemming.getPosition());
+		}
+//		this.container.getLemmings().stream()
+//        .filter(Lemming::isActive)
+//        .forEach(lemming -> lemming.print(graphics, lemming.getPosition()));
 	}
 
 	private void createButtons() {
@@ -72,5 +91,10 @@ public class GamePanel extends AbstractPanel {
 //		});
 
 		return button;
+	}
+
+	public void setCurrentLemming(Lemming lemming) {
+		// TODO Auto-generated method stub
+
 	}
 }
