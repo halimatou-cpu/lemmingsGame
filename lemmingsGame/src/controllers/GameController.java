@@ -17,25 +17,26 @@ public class GameController {
 	}
 
 	public boolean alive() {
-		return true;
-//		return this.container.getLemmings().stream().map(Lemming::isActive).reduce(true, (o, n) -> o || n);
+		
+		return this.container.getLemmings().stream().map(Lemming::isActive).reduce(true, (o, n) -> o || n);
+//		return true;
 	}
 
-//	public void step() {
-//		this.controlLemmings();
-//		this.window.repaint();
-//	}
-//
-//	public void controlLemmings() {
-//		Stream<Lemming> lemmings = this.container.getLemmings().stream().filter(Lemming::isActive);
-//
-//		lemmings.forEach(lemming -> {
-//			lemming.getState().action(lemming, ModelContainer.getInstance());
-//			Case aCase = container.getPlan().getCase(lemming.getPosition().getY() + 1, lemming.getPosition().getX());
-//
-//			if (aCase != null && aCase.isNotEmpty()) {
-//				aCase.getObstacle().action(lemming, container);
-//			}
-//		});
-//	}
+	public void step() {
+		this.controlLemmings();
+		this.window.repaint();
+	}
+
+	public void controlLemmings() {
+		Stream<Lemming> lemmings = this.container.getLemmings().stream().filter(Lemming::isActive);
+
+		lemmings.forEach(lemming -> {
+			lemming.getState().action(lemming, ModelContainer.getInstance());
+			Case aCase = container.getPlan().getCase(lemming.getPosition().getY() + 1, lemming.getPosition().getX());
+
+			if (aCase != null && aCase.isNotEmpty()) {
+				aCase.getObstacle().action(lemming, container);
+			}
+		});
+	}
 }

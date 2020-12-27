@@ -11,7 +11,7 @@ import models.terrains.Obstacle;
 
 public class EntryDoor extends Obstacle {
 	
-	private static Position position = new Position (2,2);
+	private static Position position = new Position (3,3);
 
 
 	@Override

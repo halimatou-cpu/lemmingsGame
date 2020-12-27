@@ -12,10 +12,13 @@ import models.Lemming;
 import models.ModelContainer;
 import models.Position;
 import models.fonctionnalities.State;
+import models.fonctionnalities.WalkerState;
+import models.terrains.Case;
 
 //import models.ModelContainer;
 //import views.panels.GameMouseListener;
 
+@SuppressWarnings("serial")
 public class GamePanel extends AbstractPanel {
 
 	private State state;
@@ -45,8 +48,17 @@ public class GamePanel extends AbstractPanel {
 		graphics.setColor(Color.DARK_GRAY);
 		graphics.fillRect(0, 0, Config.MAIN_COMPONENT_WIDTH, Config.MAIN_COMPONENT_HEIGHT);
 
-//		this.printCases(graphics);
+		this.printCases(graphics);
 		this.printLemmings(graphics);
+	}
+
+	private void printCases(Graphics graphics) {
+		Case[][] cases = this.container.getPlan().getCases();
+		for (int x = 0; x < cases.length; x++) {
+			for (int y = 0; y < cases[x].length; y++) {
+				cases[x][y].print(graphics, new Position(y, x));
+			}
+		}
 	}
 
 	private void printLemmings(Graphics graphics) {
@@ -83,18 +95,21 @@ public class GamePanel extends AbstractPanel {
 		// pour racccourcir ceci, faire une methode externe like "actionsetter(int
 		// index), then un match with"
 
-//		button.addActionListener(actionEvent -> {
-//			if (index == 1)
-//				state = new WalkerState();
+		button.addActionListener(actionEvent -> {
+			if (index == 1)
+				state = new WalkerState();
 //			if (index == 2)
 //				state = new CarpenterState();
-//		});
+		});
 
 		return button;
 	}
 
 	public void setCurrentLemming(Lemming lemming) {
-		// TODO Auto-generated method stub
+		if (this.state != null) {
+			lemming.setState(this.state);
+			this.state = null;
+		}
 
 	}
 }
