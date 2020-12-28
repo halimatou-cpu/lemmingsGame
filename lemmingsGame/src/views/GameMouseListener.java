@@ -18,8 +18,8 @@ public class GameMouseListener implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent mouseEvent) {
 		// TODO Auto-generated method stub
-		Lemming lemming = ModelContainer.getInstance().findLemmingAt(mouseEvent.getX() / Config.SCALE,
-				mouseEvent.getY() / Config.SCALE);
+		Lemming lemming = ModelContainer.getInstance().findLemmingAt(mouseEvent.getY() / Config.SCALE,
+				mouseEvent.getX() / Config.SCALE);
 		if (lemming != null) {
 			this.gamePanel.setCurrentLemming(lemming);
 		}
