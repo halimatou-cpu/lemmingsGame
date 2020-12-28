@@ -81,12 +81,17 @@ public class Lemming implements Printable {
 					(position.getX() * Config.SCALE + Config.SCALE - 2),
 					(position.getY() * Config.SCALE + Config.SCALE / 2));
 		} else {
-			graphics.drawLine(position.getX() * Config.SCALE, 
-					(position.getY() * Config.SCALE + Config.SCALE / 2),
+			graphics.drawLine(position.getX() * Config.SCALE, (position.getY() * Config.SCALE + Config.SCALE / 2),
 					(position.getX() * Config.SCALE + Config.SCALE / 2),
 					(position.getY() * Config.SCALE + Config.SCALE / 2));
 		}
 
+	}
+
+	@Override
+	public String toString() {
+		return "Lemming{" + "position=" + position + ", direction=" + direction + ", isActive=" + isActive + ", state="
+				+ state + '}';
 	}
 
 }

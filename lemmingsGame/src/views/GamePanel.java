@@ -7,16 +7,19 @@ import java.awt.Graphics;
 import javax.swing.JButton;
 
 import config.Config;
-import models.Direction;
 import models.Lemming;
 import models.ModelContainer;
 import models.Position;
+import models.fonctionnalities.BlockerState;
+import models.fonctionnalities.BomberState;
+import models.fonctionnalities.CarpenterState;
+import models.fonctionnalities.ClimberState;
+import models.fonctionnalities.DrillerState;
+import models.fonctionnalities.ParachutistState;
 import models.fonctionnalities.State;
+import models.fonctionnalities.TunnellerState;
 import models.fonctionnalities.WalkerState;
 import models.terrains.Case;
-
-//import models.ModelContainer;
-//import views.panels.GameMouseListener;
 
 @SuppressWarnings("serial")
 public class GamePanel extends AbstractPanel {
@@ -56,7 +59,7 @@ public class GamePanel extends AbstractPanel {
 		Case[][] cases = this.container.getPlan().getCases();
 		for (int x = 0; x < cases.length; x++) {
 			for (int y = 0; y < cases[x].length; y++) {
-				cases[x][y].print(graphics, new Position(y, x));
+				cases[x][y].print(graphics, new Position(y, x)); // don't touch
 			}
 		}
 	}
@@ -95,14 +98,52 @@ public class GamePanel extends AbstractPanel {
 		// pour racccourcir ceci, faire une methode externe like "actionsetter(int
 		// index), then un match with"
 
-		button.addActionListener(actionEvent -> {
-			if (index == 1)
-				state = new WalkerState();
-//			if (index == 2)
-//				state = new CarpenterState();
-		});
+		actionSetter(button, index);
+
+//		button.addActionListener(actionEvent -> {
+//			if (index == 1)
+//				state = new WalkerState();
+////			if (index == 2)
+////				state = new CarpenterState();
+//		});
 
 		return button;
+	}
+
+	private void actionSetter(JButton button, int index) {
+		button.addActionListener(actionEvent -> {
+
+			switch (index) {
+			case 1:
+				state = new WalkerState();
+				break;
+			case 2:
+				state = new BlockerState();
+				break;
+			case 3:
+				state = new TunnellerState();
+				break;
+			case 4:
+				state = new DrillerState();
+				break;
+			case 5:
+				state = new BomberState();
+				break;
+			case 6:
+				state = new CarpenterState();
+				break;
+			case 7:
+				state = new ClimberState();
+				break;
+			case 8:
+				state = new ParachutistState();
+				break;
+
+			default:
+				state = new WalkerState();
+				break;
+			}
+		});
 	}
 
 	public void setCurrentLemming(Lemming lemming) {
@@ -112,4 +153,5 @@ public class GamePanel extends AbstractPanel {
 		}
 
 	}
+
 }

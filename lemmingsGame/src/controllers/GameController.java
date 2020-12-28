@@ -17,7 +17,7 @@ public class GameController {
 	}
 
 	public boolean alive() {
-		
+
 		return this.container.getLemmings().stream().map(Lemming::isActive).reduce(true, (o, n) -> o || n);
 //		return true;
 	}
@@ -32,7 +32,7 @@ public class GameController {
 
 		lemmings.forEach(lemming -> {
 			lemming.getState().action(lemming, ModelContainer.getInstance());
-			Case aCase = container.getPlan().getCase(lemming.getPosition().getY() + 1, lemming.getPosition().getX());
+			Case aCase = container.getPlan().getCase(lemming.getPosition().getX(), lemming.getPosition().getY() + 1);
 
 			if (aCase != null && aCase.isNotEmpty()) {
 				aCase.getObstacle().action(lemming, container);
