@@ -16,7 +16,7 @@ public class App {
 			} catch (Exception ignore) {
 			}
 
-//			controller.step();
+			controller.step();
 		}
 
 //         window.dispatchEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSING));

@@ -144,6 +144,7 @@ public class GamePanel extends AbstractPanel {
 				break;
 			}
 		});
+
 	}
 
 	public void setCurrentLemming(Lemming lemming) {

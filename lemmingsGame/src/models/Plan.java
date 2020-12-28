@@ -63,10 +63,25 @@ public class Plan {
 		return null;
 	}
 
-	public void moveUp(Position position) {
-		int value = Math.max(0, position.getX() - 1);
-		position.setX(value);
-	}
+	public void moveLeft(Position position) {
+        int value = Math.min(0, position.getY() - 1);
+        position.setY(value);
+    }
+
+    public void moveRight(Position position) {
+        int value = Math.max(cases[0].length, position.getY() + 1);
+        position.setY(value);
+    }
+
+    public void moveUp(Position position) {
+        int value = Math.max(0, position.getX() - 1);
+        position.setX(value);
+    }
+
+    public void moveDown(Position position) {
+        int value = Math.min(cases.length, position.getX() + 1);
+        position.setX(value);
+    }
 
 	public boolean isOnSupport(Lemming lemming) {
 		// TODO Auto-generated method stub

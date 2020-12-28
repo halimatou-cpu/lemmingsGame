@@ -8,6 +8,7 @@ import javax.swing.JButton;
 
 import config.Config;
 
+@SuppressWarnings("serial")
 public class SideBarPanel extends AbstractPanel{
 	List<JButton> buttons;
 

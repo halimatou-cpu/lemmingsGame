@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 
 import config.Config;
 
-
 @SuppressWarnings("serial")
 public class Window extends JFrame {
 	public Window() {

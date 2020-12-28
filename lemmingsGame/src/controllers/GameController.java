@@ -27,16 +27,34 @@ public class GameController {
 		this.window.repaint();
 	}
 
-	public void controlLemmings() {
-		Stream<Lemming> lemmings = this.container.getLemmings().stream().filter(Lemming::isActive);
+//	public void controlLemmings() {
+//		Stream<Lemming> lemmings = this.container.getLemmings().stream().filter(Lemming::isActive);
+//
+//		lemmings.forEach(lemming -> {
+//			lemming.getState().action(lemming, ModelContainer.getInstance());
+//			Case aCase = container.getPlan().getCase(lemming.getPosition().getX(), lemming.getPosition().getY() + 1);
+//
+//			if (aCase != null && aCase.isNotEmpty()) {
+//				aCase.getObstacle().action(lemming, container);
+//			}
+//		});
+//	}
+	
+	 public void controlLemmings() {
+	        Stream<Lemming> lemmings = this.container
+	                .getLemmings().stream()
+	                .filter(Lemming::isActive);
 
-		lemmings.forEach(lemming -> {
-			lemming.getState().action(lemming, ModelContainer.getInstance());
-			Case aCase = container.getPlan().getCase(lemming.getPosition().getX(), lemming.getPosition().getY() + 1);
 
-			if (aCase != null && aCase.isNotEmpty()) {
-				aCase.getObstacle().action(lemming, container);
-			}
-		});
-	}
+	        lemmings.forEach(lemming -> {
+	            lemming.getState().action(lemming, ModelContainer.getInstance());
+	            Case aCase = container.getPlan()
+	                    .getCase(lemming.getPosition().getX() , lemming.getPosition().getY() + 1);
+
+	            if (aCase != null && aCase.isNotEmpty()) {
+	                aCase.getObstacle().action(lemming, container);
+	            }
+	            System.out.println( lemming.toString());
+	        });
+	    }
 }

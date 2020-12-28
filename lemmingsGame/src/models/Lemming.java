@@ -90,8 +90,12 @@ public class Lemming implements Printable {
 
 	@Override
 	public String toString() {
-		return "Lemming{" + "position=" + position + ", direction=" + direction + ", isActive=" + isActive + ", state="
-				+ state + '}';
+		return "Lemming{" +
+                "position= (" + position.getX() +", " + position.getY() +
+                ") , direction=" + direction +
+                ", isActive=" + isActive +
+                ", state=" + state +
+                '}';
 	}
 
 }
